@@ -105,3 +105,5 @@ def rc_r():
     b_content = find_block("req_r_new.txt","###"+get_tnum()+"###","###end###")
     return b_content
 # print(rc_r())
+
+##
