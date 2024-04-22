@@ -69,18 +69,23 @@ for i in rr():
     if gss == "阴阳阳":
         sy = "兑"
 
-yixiang =  sy + "上" + xy + "下"
+def get_yx():
+    yixiang =  sy + "上" + xy + "下"
+    return yixiang
 # print(yixiang)
-with open("yixiang.txt","r",encoding="utf-8") as f:
-    for line in f.readlines():
-        if str(yixiang) in line:
-            # print(line.strip())
-            tarline = str(line)
-# print(sy)
-# print(xy)
+def get_tl():
+    with open("yixiang.txt","r",encoding="utf-8") as f:
+        for line in f.readlines():
+            if str(get_yx()) in line:
+                # print(line.strip())
+                tarline = str(line)
+    return tarline
+# print(get_tl())
 # print(tarline)
-tnum = tarline.split("-")[0]
-#print(tnum)
+def get_tnum():
+    tnum = str(get_tl()).split("-")[0]
+    return tnum
+# print(get_tnum())
 
 def find_block(bpath,bstart,bend):
     found = False
@@ -97,6 +102,6 @@ def find_block(bpath,bstart,bend):
     return  '\n'.join(btarget)
 
 def rc_r():
-    b_content = find_block("req_r_new.txt","###"+str(tnum)+"###","###end###")
+    b_content = find_block("req_r_new.txt","###"+get_tnum()+"###","###end###")
     return b_content
 # print(rc_r())
