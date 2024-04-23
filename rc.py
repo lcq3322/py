@@ -7,6 +7,12 @@ def run_coin():
     ran_con3 = random.randint(2, 3)
     return ran_con1 + ran_con2 + ran_con3
 
+fdata = ""
+def set_fdata_mem():
+    global fdata
+    fdata = open("yixiang.txt", "r", encoding="utf-8")
+set_fdata_mem()
+
 def rr():
     lis1 = []
     for _ in range(3):
@@ -73,12 +79,14 @@ def get_sy():
 def get_yx():
     yixiang =  str(get_sy()) + "上" + str(get_xy()) + "下"
     return yixiang
-# print(yixiang)
+# print(get_yx())
 def get_tl():
-    with open("yixiang.txt","r",encoding="utf-8") as f:
-        for line in f.readlines():
-            if str(get_yx()) in line:
-                return line
+    yx = str(get_yx())
+    global fdata
+    fdata.seek(0)
+    for line in fdata.readlines():
+        if yx in line:
+            return line
 # print(get_tl())
 # print(tarline)
 def get_tnum():
@@ -104,6 +112,6 @@ def rc_r():
     b_content = find_block("req_r_new.txt","###"+get_tnum()+"###","###end###")
     return b_content
 
-print(rc_r())
+# print(rc_r())
 
 ##
