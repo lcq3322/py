@@ -26,60 +26,59 @@ def rr():
             # lis1.append("阳—")
             lis1.append("阳")
     return list(reversed(lis1))
-
-gsx = ""
-for i in rr():
-    # print(i)
-    gsx = gsx+str(i)
-    if gsx == "阳阳阳":
-        xy = "乾"
-    if gsx == "阴阴阴":
-        xy = "坤"
-    if gsx == "阴阴阳":
-        xy = "震"
-    if gsx == "阳阳阴":
-        xy = "巽"
-    if gsx == "阴阳阴":
-        xy = "坎"
-    if gsx == "阳阴阳":
-        xy = "离"
-    if gsx == "阳阴阴":
-        xy = "艮"
-    if gsx == "阴阳阳":
-        xy = "兑"
-
-gss = ""
-for i in rr():
-    # print(i)
-    gss = gss+str(i)
-    if gss == "阳阳阳":
-        sy = "乾"
-    if gss == "阴阴阴":
-        sy = "坤"
-    if gss == "阴阴阳":
-        sy = "震"
-    if gss == "阳阳阴":
-        sy = "巽"
-    if gss == "阴阳阴":
-        sy = "坎"
-    if gss == "阳阴阳":
-        sy = "离"
-    if gss == "阳阴阴":
-        sy = "艮"
-    if gss == "阴阳阳":
-        sy = "兑"
-
+def get_xy():
+    gsx = ""
+    for i in rr():
+        # print(i)
+        gsx = gsx+str(i)
+        if gsx == "阳阳阳":
+            xy = "乾"
+        if gsx == "阴阴阴":
+            xy = "坤"
+        if gsx == "阴阴阳":
+            xy = "震"
+        if gsx == "阳阳阴":
+            xy = "巽"
+        if gsx == "阴阳阴":
+            xy = "坎"
+        if gsx == "阳阴阳":
+            xy = "离"
+        if gsx == "阳阴阴":
+            xy = "艮"
+        if gsx == "阴阳阳":
+            xy = "兑"
+    return xy
+def get_sy():
+    gss = ""
+    for i in rr():
+        # print(i)
+        gss = gss+str(i)
+        if gss == "阳阳阳":
+            sy = "乾"
+        if gss == "阴阴阴":
+            sy = "坤"
+        if gss == "阴阴阳":
+            sy = "震"
+        if gss == "阳阳阴":
+            sy = "巽"
+        if gss == "阴阳阴":
+            sy = "坎"
+        if gss == "阳阴阳":
+            sy = "离"
+        if gss == "阳阴阴":
+            sy = "艮"
+        if gss == "阴阳阳":
+            sy = "兑"
+    return sy
 def get_yx():
-    yixiang =  sy + "上" + xy + "下"
+    yixiang =  str(get_sy()) + "上" + str(get_xy()) + "下"
     return yixiang
 # print(yixiang)
 def get_tl():
     with open("yixiang.txt","r",encoding="utf-8") as f:
         for line in f.readlines():
             if str(get_yx()) in line:
-                # print(line.strip())
-                tarline = str(line)
-    return tarline
+                return line
 # print(get_tl())
 # print(tarline)
 def get_tnum():
@@ -104,6 +103,7 @@ def find_block(bpath,bstart,bend):
 def rc_r():
     b_content = find_block("req_r_new.txt","###"+get_tnum()+"###","###end###")
     return b_content
-# print(rc_r())
+
+print(rc_r())
 
 ##
